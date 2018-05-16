@@ -1,1 +1,9 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+# Welcome to SpaceBnb
+
+We hope you enjoy your space explorations.
+
+## Team
+
+Irvin
+Philipp
+Ryan
