@@ -18,6 +18,18 @@
   p spaceship.name
 end
 
+2.times do
+  booking = Booking.new(
+    start_date: Faker::Date.between(4.days.ago, Date.today),
+    end_date: Date.today,
+    total_price: 300000,
+    user_id: 1,
+    spaceship_id: 13,
+    )
+  booking.save!
+  p booking.total_price
+end
+
 # 10.times do
 #   User.create(
 #     name: Faker::HitchhikersGuideToTheGalaxy.character,
@@ -26,3 +38,16 @@ end
 #     description: Faker::HitchhikersGuideToTheGalaxy.quote
 #     )
 # end
+
+  # create_table "bookings", force: :cascade do |t|
+  #   t.date "start_date"
+  #   t.date "end_date"
+  #   t.integer "total_price"
+  #   t.string "status"
+  #   t.bigint "user_id"
+  #   t.bigint "spaceship_id"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  #   t.index ["spaceship_id"], name: "index_bookings_on_spaceship_id"
+  #   t.index ["user_id"], name: "index_bookings_on_user_id"
+  # end
