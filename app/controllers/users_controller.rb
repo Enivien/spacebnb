@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only:
   before_action :set_user, only: [:show, :destroy]
 
   def show
