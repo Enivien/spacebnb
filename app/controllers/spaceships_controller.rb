@@ -4,7 +4,7 @@ class SpaceshipsController < ApplicationController
 
   def index
     @spaceships = policy_scope(Spaceship).order(created_at: :desc)
-    authorize @spaceship
+    authorize @spaceships
   end
 
   def show
