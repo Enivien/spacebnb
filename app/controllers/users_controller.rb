@@ -1,16 +1,20 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only:
-  before_action :set_user, only: [:show, :destroy]
+  # before_action :set_user, only: [:show, :destroy]
 
   def show
+    @user = User.find(params[:id])
+    authorize @user
   end
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
     user = User.new(user_params)
+    authorize @user
     user.save
     if user.save
       redirect_to user_path(user)
