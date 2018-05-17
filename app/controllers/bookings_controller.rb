@@ -6,13 +6,18 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @spaceship = Spaceship.find(params[:spaceship_id])
     @booking = Booking.new(booking_params)
+    @booking.spaceship = @spaceship
+
+# CHANGE TO CURRENT USER
+    @booking.user_id = 1
     authorize @booking
-    @booking.save
     if @booking.save
-      redirect_to booking_path(@booking)
+      flash[:succes]
+      redirect_to user_path(current_user)
     else
-      render :new
+      render "spaceships/show"
     end
   end
 
