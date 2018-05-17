@@ -1,10 +1,11 @@
 
 <h2>You get what you want when you poppin'</h2>
+<br>
 
 <h3> Welcome <%= current_user.name %>!</h3>
+<br>
 
-
-<h4>Your Spaceships & Incoming Bookings:</h4>
+<h4>Your Spaceships 🚀 & Incoming Bookings:</h4>
 <ul>
   <% if current_user.spaceships.present? %>
   <% current_user.spaceships.each do |spaceship| %>
@@ -35,6 +36,8 @@
   <p>You have no spaceships</p>
   <% end %>
 </ul>
+
+<br>
 
 <h4>Your Outgoing Requests:</h4>
 
