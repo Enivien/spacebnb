@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :spaceships do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :edit, :update]
   end
 
   resources :bookings, only: [] do
