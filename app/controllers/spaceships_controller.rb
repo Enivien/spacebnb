@@ -3,18 +3,22 @@ class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: [:show, :destroy]
 
   def index
-    @spaceships = Spaceship.all
+    @spaceships = policy_scope(Spaceship).order(created_at: :desc)
+    authorize @spaceship
   end
 
   def show
+    authorize @spaceship
   end
 
   def new
     @spaceship = Spaceship.new
+    authorize @spaceship
   end
 
   def create
     @spaceship = Spaceship.new(spaceship_params)
+    authorize @spaceship
     @spaceship.user = current_user
     @spaceship.save
     if @spaceship.save
@@ -26,6 +30,7 @@ class SpaceshipsController < ApplicationController
 
   def destroy
     @spaceship.destroy
+    authorize @spaceship
     redirect_to spaceships_path
   end
 
