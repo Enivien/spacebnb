@@ -1,11 +1,8 @@
-<h1 class="text-center">Find your spaceship!</h1>
 
-<div class="text-center padded">
-  <%= link_to "List a spaceship", new_spaceship_path, class: "btn btn-primary" %>
-</div>
 
 <div class="content">
-  <div class="cards-container">
+  <div class="container">
+    <h1 class="text-center">More then 5000 spaceships:</h1>
     <div class="row">
       <% @spaceships.each do |spaceship| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -18,12 +15,17 @@
           </div>
           <% end %>
           <div class="card-body">
-            <%= link_to spaceship.name, spaceship_path(spaceship) %>
+            <%= link_to spaceship.name, spaceship_path(spaceship), class: "title" %>
           </div>
         </div>
       </div>
       <% end %>
     </div>
+    <div class="text-center padded">
+      <%= link_to "List a spaceship", new_spaceship_path, class: "btn btn-primary" %>
+    </div>
+
   </div>
-  <div id="map"></div>
+  <div id="map"><%= image_tag "space.png" %></div>
 </div>
+

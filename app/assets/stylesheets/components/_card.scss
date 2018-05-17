@@ -7,22 +7,27 @@
   position: relative;
   background-color: white;
   margin-bottom: 70px;
+  border-radius: 11px;
+
 }
 
 .card-header {
   height: 175px;
   background-size: cover !important;
+  border-radius: 11px 11px 0px 0px;
 }
 
 .card-body {
-  height: 50px;
+  text-align: center;
   background-color: white;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   color: black;
   text-align: center;
-  padding: 20px;
+  padding: 14px;
   text-decoration: none;
+  border-radius: 0px 0px 11px 11px;
 }
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -43,7 +48,13 @@
   left: 10px;
 }
 .card-description h2 {
-  font-size: 24px;
+  font-size: 12px;
+  color: #404448
+}
+
+.card-body .title {
+  font-size: 16px;
+  color: #404448;
 }
 .card-description p {
   font-size: 14px;
