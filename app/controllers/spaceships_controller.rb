@@ -14,10 +14,11 @@ class SpaceshipsController < ApplicationController
   end
 
   def create
-    spaceship = Spaceship.new(spaceship_params)
-    spaceship.save
-    if spaceship.save
-      redirect_to spaceship_path(spaceship)
+    @spaceship = Spaceship.new(spaceship_params)
+    @spaceship.user = current_user
+    @spaceship.save
+    if @spaceship.save
+      redirect_to spaceship_path(@spaceship)
     else
       render :new
     end
