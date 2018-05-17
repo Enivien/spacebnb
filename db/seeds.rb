@@ -7,13 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do
-  Spaceship.create(
+  spaceship = Spaceship.new(
     name: Faker::HitchhikersGuideToTheGalaxy.starship,
     location: "space coordinates",
-    picture: "url",
     capacity: (50..200).to_a.sample,
-    price: (500..10000).to_a.sample
+    price: (500..10000).to_a.sample,
+    user_id: 1
     )
+  spaceship.save!
   p spaceship.name
 end
 

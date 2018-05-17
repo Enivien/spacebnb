@@ -1,2 +1,29 @@
-<h1>Spaceships#index</h1>
-<p>Find me in app/views/spaceships/index.html.erb</p>
+<h1 class="text-center">Find your spaceship!</h1>
+
+<div class="text-center padded">
+  <%= link_to "List a spaceship", new_spaceship_path, class: "btn btn-primary" %>
+</div>
+
+<div class="content">
+  <div class="cards-container">
+    <div class="row">
+      <% @spaceships.each do |spaceship| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card text-center">
+          <% if spaceship.picture.present? %>
+          <div class="card-header" style="background-image: url('<%= cl_image_path spaceship.picture, height: 300, width: 400, crop: :fill %>')">
+          </div>
+          <% else %>
+          <div class="card-header" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5qlP69YDBhOL-DV0cDt1b7TUe2D5RLIiCzNkjvcDldQGkVhR')">
+          </div>
+          <% end %>
+          <div class="card-body">
+            <%= link_to spaceship.name, spaceship_path(spaceship) %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>
