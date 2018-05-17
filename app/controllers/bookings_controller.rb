@@ -11,10 +11,10 @@ class BookingsController < ApplicationController
     @booking.spaceship = @spaceship
 
 # CHANGE TO CURRENT USER
-    @booking.user_id = 1
+    @booking.user = current_user
     authorize @booking
     if @booking.save
-      flash[:succes]
+      flash[:notice] = "You booked a f*cking spaceship!"
       redirect_to user_path(current_user)
     else
       render "spaceships/show"
