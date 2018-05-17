@@ -1,0 +1,5 @@
+<%= simple_form_for [@spaceship, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "Book your spaceship", class: "btn btn-primary" %>
+<% end %>

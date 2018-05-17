@@ -9,6 +9,7 @@ class SpaceshipsController < ApplicationController
 
   def show
     authorize @spaceship
+    @booking = Booking.new
   end
 
   def new
