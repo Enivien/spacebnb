@@ -1,2 +1,35 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<h2>You get what you want when you poppin</h2>
+<h3> Welcome <%= current_user.name %>!</h3>
+
+<ul>
+  <% if current_user.spaceships.present? %>
+  <% current_user.spaceships.each do |spaceship| %>
+  <li>
+    <%= spaceship.name %>
+    <% spaceship.bookings.each do |booking| %>
+    <% if booking.present? %>
+    <p><%= booking.start_date %></p>
+    <p><%= booking.end_date %></p>
+ <!--    <#% if booking.status == "Accepted" %>
+    <p>Accepted</p>
+    <#% elsif booking.status == "Declined" %>
+    <p>Declined</p>
+    <#% else %> -->
+    <%= simple_form_for ([spaceship, booking]) do |f| %>
+    <%= f.select :status, ['Accepted', 'Declined']%>
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+<!--     <#% end %> -->
+    <% end %>
+    <p><%= booking.total_price %></p>
+    <% end %>
+    <% end %>
+  </li>
+  <% end %>
+
+  <% else %>
+  <p>You have no spaceships</p>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Back to Explore Spaceships', spaceships_path %></p>

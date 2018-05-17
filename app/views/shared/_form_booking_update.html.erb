@@ -1,0 +1,4 @@
+<%= simple_form_for ([spaceship, booking]) do |f| %>
+<%= f.select :status, ['Accepted', 'Declined']%>
+<%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>
