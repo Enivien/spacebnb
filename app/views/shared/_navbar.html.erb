@@ -19,7 +19,7 @@
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <img src= <%= cl_image_path current_user.avatar %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <img src="" <%#= cl_image_path current_user.avatar %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <!-- <li><a href="#">Profile</a></li> -->
           <li><%= link_to "Profile", user_path(current_user) %></li>
