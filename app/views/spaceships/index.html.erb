@@ -6,26 +6,41 @@
     <div class="row">
       <% @spaceships.each do |spaceship| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card text-center">
+        <%= link_to spaceship_path(spaceship) do %>
           <% if spaceship.picture.present? %>
-          <div class="card-header" style="background-image: url('<%= cl_image_path spaceship.picture, height: 300, width: 400, crop: :fill %>')">
-          </div>
-          <% else %>
-          <div class="card-header" style="background-image: url('https://media.tenor.com/images/baa51bc6187cb2fc286a3d3582061f12/tenor.png')">
-          </div>
+            <div class="card" style="background-image: url('<%= cl_image_path spaceship.picture, height: 300, width: 400, crop: :fill %>')">
+            <% else %>
+            <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5qlP69YDBhOL-DV0cDt1b7TUe2D5RLIiCzNkjvcDldQGkVhR')">
           <% end %>
-          <div class="card-body">
-            <%= link_to spaceship.name, spaceship_path(spaceship), class: "title" %>
+            <div class="card-category">Popular</div>
+            <div class="card-description">
+              <%= spaceship.name %>
+            </div>
+            <div class="card-price">
+             $ <%= spaceship.price %>
+            </div>
           </div>
         </div>
+        <% end %>
+          <% end %>
       </div>
-      <% end %>
-    </div>
-    <div class="text-center padded">
-      <%= link_to "List a spaceship", new_spaceship_path, class: "btn btn-primary" %>
-    </div>
 
+
+      <div class="text-center padded">
+        <%= link_to "List a spaceship", new_spaceship_path, class: "btn btn-primary" %>
+      </div>
+
+    </div>
+    <!-- <div id="map"><%= image_tag "space.png" %></div> -->
   </div>
-  <div id="map"><%= image_tag "space.png" %></div>
-</div>
-
+<!--
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+    <div class="card-category">Popular</div>
+    <div class="card-description">
+      <h2>Le Wagon Shanghai</h2>
+      <p>Very cool city, the best</p>
+    </div>
+    <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+    <a class="card-link" href="#" ></a>
+  </div>
+ -->

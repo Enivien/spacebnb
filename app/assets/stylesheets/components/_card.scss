@@ -5,7 +5,11 @@
   background-position: center;
   color: white;
   position: relative;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  transition:1s;
 }
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -13,6 +17,14 @@
   width: 40px;
   border-radius: 50%;
 }
+
+
+.card-price {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 .card-category {
   position: absolute;
   top: 10px;
@@ -43,6 +55,6 @@
   background: black;
   opacity: 0;
 }
-.card-link:hover {
-  opacity: 0.1;
+.card:hover {
+  transform: translateY(-10px);
 }
