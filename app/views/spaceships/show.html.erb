@@ -7,124 +7,129 @@ url('<%= cl_image_path @spaceship.picture, height: 300, width: 400, crop: :fill 
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url('https://media.tenor.com/images/baa51bc6187cb2fc286a3d3582061f12/tenor.png')"></div>
 <% end %>
 
+<div class="container">
 
-<h3>You get what you want when you poppin'</h3>
+  <!-- <h3>You get what you want when you poppin'</h3> -->
 
-<div class="header-spaceship">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-1">
-        <div class="header-spaceship-details">
-          <div class="header-spaceship-owner text-center">
-            <%= cl_image_tag @spaceship.user.avatar, height: 150 %>
-            <p><%= @spaceship.user.name %></p>
+  <div class="header-spaceship">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+          <div class="header-spaceship-details">
+            <div class="header-spaceship-owner text-center">
+              <%= cl_image_tag @spaceship.user.avatar, height: 50 %>
+              <p><%= @spaceship.user.name %></p>
+            </div>
+            <div class="header-spaceship-name">
+              <h1><%= @spaceship.name %></h1>
+              <p><%= @spaceship.location %></p>
+              <p class="rating">
+                <i class="fa fa-star" style="color: #ffb400"></i>
+                <i class="fa fa-star" style="color: #ffb400"></i>
+                <i class="fa fa-star" style="color: #ffb400"></i>
+                <i class="fa fa-star" style="color: #ffb400"></i>
+                <i class="fa fa-star" style="color: #ffb400"></i>
+              </p>
+            </div>
+
           </div>
-          <div class="header-spaceship-name">
-            <h1><%= @spaceship.name %></h1>
-            <p><%= @spaceship.location %></p>
-            <p class="rating">
-              <i class="fa fa-star" style="color: #ffb400"></i>
-              <i class="fa fa-star" style="color: #ffb400"></i>
-              <i class="fa fa-star" style="color: #ffb400"></i>
-              <i class="fa fa-star" style="color: #ffb400"></i>
-              <i class="fa fa-star" style="color: #ffb400"></i>
-            </p>
-          </div>
+        </div>
+        <div id="spaceship-description">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="card-white">
+                  <h2>About this spaceship</h2>
+                  <p>
+                    This one bedroom spaceship lodges 2 people (there's 1 double bed) it is located in outer space, in a calm traditional residential star system near Vulkan's main moon - 3 lightyears from planet Blue.
+                  </p>
 
+                  <hr>
+                  <div class="row" id="spaceship-data">
+                    <div class="col-xs-12 col-sm-2">
+                      The Space
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                      <ul class="list-unstyled">
+                        <li>Accommodates:  <strong>2</strong></li>
+                        <li>Bathrooms:  <strong>1</strong></li>
+                        <li>Bed type:  <strong>Real Bed</strong></li>
+                        <li>Bedrooms:  <strong>1</strong></li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                      <ul class="list-unstyled">
+                        <li>Beds: <strong>1</strong></li>
+                        <li>Property type: <strong>Apartment</strong></li>
+                        <li>Room type: <strong>Entire home/apt</strong></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row" id="spaceship-data">
+                    <div class="col-xs-12 col-sm-2">
+                      Amenities
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                      <ul class="list-unstyled">
+                        <li><i class="fa fa-cutlery"></i><strong>Kitchen</strong></li>
+                        <li><i class="fa fa-wifi"></i><strong>Wifi</strong></li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                      <ul class="list-unstyled">
+                        <li><i class="fa fa-desktop"></i><strong>TV</strong></li>
+                        <li><i class="fa fa-glass"></i><strong>Welcome drink</strong></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row" id="spaceship-data">
+                    <div class="col-xs-12 col-sm-2">
+                      Reviews
+                    </div>
+                    <% if @spaceship.reviews.present? %>
+                    <div class="col-xs-12 col-sm-4">
+                      <% @spaceship.reviews.each do |review| %>
+                      <ul class="list-unstyled">
+                        <li>
+                          Content: <%= review.content %>
+                        </li>
+                        <li>
+                          Stars: <%= review.stars %>
+                        </li>
+                        <li>
+                          Customer: <%= review.booking.user.name %>
+                        </li>
+                      </ul>
+                      <% end %>
+                      <% else %>
+                      <p>No reviews yet :(</p>
+                      <% end %>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+          <!-- GET FORM INTO SHARED FOLDER > ASK TEACHER -->
+          <%= simple_form_for [@spaceship, @booking] do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.submit "Book your spaceship", class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- GET FORM INTO SHARED FOLDER > ASK TEACHER -->
-        <%= simple_form_for [@spaceship, @booking] do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <%= f.submit "Book your spaceship", class: "btn btn-primary" %>
-        <% end %>
-      </div>
     </div>
+
+
   </div>
 
 
 </div>
 
-<div id="spaceship-description">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-        <h2>About this spaceship</h2>
-        <p>
-          This one bedroom spaceship lodges 2 people (there's 1 double bed) it is located in outer space, in a calm traditional residential star system near Vulkan's main moon - 3 lightyears from planet Blue.
-        </p>
-
-        <hr>
-        <div class="row" id="spaceship-data">
-          <div class="col-xs-12 col-sm-2">
-            The Space
-          </div>
-          <div class="col-xs-12 col-sm-4">
-            <ul class="list-unstyled">
-              <li>Accommodates:  <strong>2</strong></li>
-              <li>Bathrooms:  <strong>1</strong></li>
-              <li>Bed type:  <strong>Real Bed</strong></li>
-              <li>Bedrooms:  <strong>1</strong></li>
-            </ul>
-          </div>
-          <div class="col-xs-12 col-sm-4">
-            <ul class="list-unstyled">
-              <li>Beds: <strong>1</strong></li>
-              <li>Property type: <strong>Apartment</strong></li>
-              <li>Room type: <strong>Entire home/apt</strong></li>
-            </ul>
-          </div>
-        </div>
-        <hr>
-        <div class="row" id="spaceship-data">
-          <div class="col-xs-12 col-sm-2">
-            Amenities
-          </div>
-          <div class="col-xs-12 col-sm-4">
-            <ul class="list-unstyled">
-              <li><i class="fa fa-cutlery"></i><strong>Kitchen</strong></li>
-              <li><i class="fa fa-wifi"></i><strong>Wifi</strong></li>
-            </ul>
-          </div>
-          <div class="col-xs-12 col-sm-4">
-            <ul class="list-unstyled">
-              <li><i class="fa fa-desktop"></i><strong>TV</strong></li>
-              <li><i class="fa fa-glass"></i><strong>Welcome drink</strong></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row" id="spaceship-data">
-          <div class="col-xs-12 col-sm-2">
-            Reviews
-          </div>
-          <% if @spaceship.reviews.present? %>
-          <div class="col-xs-12 col-sm-4">
-            <% @spaceship.reviews.each do |review| %>
-            <ul class="list-unstyled">
-              <li>
-                Content: <%= review.content %>
-              </li>
-              <li>
-                Stars: <%= review.stars %>
-              </li>
-              <li>
-                Customer: <%= review.booking.user.name %>
-              </li>
-            </ul>
-            <% end %>
-            <% else %>
-            <p>No reviews yet :(</p>
-            <% end %>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
 </div>
-
-</div>
-
-

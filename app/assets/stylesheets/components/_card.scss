@@ -10,6 +10,21 @@
   transition:1s;
 }
 
+.card-white {
+  margin-top: 20xp;
+  height: 60 vh;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  background-color: grey;
+  color: white;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  transition:1s;
+  padding: 30px;
+}
+
 .card-user {
   position: absolute;
   right: 10px;
