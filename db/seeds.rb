@@ -9,7 +9,7 @@
 10.times do
   spaceship = Spaceship.new(
     name: Faker::HitchhikersGuideToTheGalaxy.starship,
-    location: "space coordinates",
+    location: "Mars",
     capacity: (50..200).to_a.sample,
     price: (500..10000).to_a.sample,
     user_id: 1

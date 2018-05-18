@@ -1,6 +1,6 @@
 <div class="content">
   <div class="container">
-    <h1 class="text-center">Find your next spaceship:</h1>
+    <h1 class="text-center">Find your next spaceship</h1>
     <div class="row">
       <% @spaceships.each do |spaceship| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -8,7 +8,7 @@
           <% if spaceship.picture.present? %>
             <div class="card" style="background-image: url('<%= cl_image_path spaceship.picture, height: 300, width: 400, crop: :fill %>')">
             <% else %>
-            <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5qlP69YDBhOL-DV0cDt1b7TUe2D5RLIiCzNkjvcDldQGkVhR')">
+            <div class="card" style="background-image: url('https://media.tenor.com/images/baa51bc6187cb2fc286a3d3582061f12/tenor.png')">
           <% end %>
             <div class="card-category">Popular</div>
             <div class="card-description">
@@ -20,14 +20,13 @@
           </div>
         </div>
         <% end %>
-          <% end %>
+      <% end %>
       </div>
-
 
       <div class="text-center padded">
         <%= link_to "List a spaceship", new_spaceship_path, class: "btn btn-primary" %>
       </div>
-      </div>
+    </div>
     <div id="map" style="width: 100%; height: 100vh;" data-markers="<%= @markers.to_json %>">
     </div>
   </div>
