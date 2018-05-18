@@ -5,6 +5,11 @@
 <h3> Welcome <%= current_user.name %>!</h3>
 <br>
 
+<p> <strong>Bio:</strong></p>
+<p><%= current_user.description %></p>
+
+<br>
+
 <h4>Your Spaceships 🚀 & Incoming Bookings:</h4>
 <ul>
   <% if current_user.spaceships.present? %>
