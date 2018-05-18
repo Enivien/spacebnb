@@ -24,7 +24,7 @@ end
     end_date: Date.today,
     total_price: 300000,
     user_id: 1,
-    spaceship_id: 13,
+    spaceship_id: 1,
     )
   booking.save!
   p booking.total_price
