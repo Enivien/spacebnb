@@ -15,7 +15,9 @@
   <% if current_user.spaceships.present? %>
   <% current_user.spaceships.each do |spaceship| %>
   <li>
-    <p><strong>Spaceship:</strong> <%= spaceship.name %></p>
+    <p><strong>Spaceship:</strong>
+      <%= link_to spaceship.name, spaceship_path(spaceship) %>
+    </p>
     <% spaceship.bookings.each do |booking| %>
     <% if booking.present? %>
     <p><strong>Booking:</strong></p>
@@ -50,7 +52,8 @@
   <% Booking.all.each do |booking| %>
   <li>
     <% if booking.user == current_user %>
-    <p><strong>Spaceship:</strong> <%= booking.spaceship.name %></p>
+    <p><strong>Spaceship:</strong>
+      <%= link_to booking.spaceship.name, spaceship_path(booking.spaceship) %></p>
     <p><strong>Status:</strong> <%= booking.status %></p>
     <% else %>
     <p>You have no outgoing requests</p>
