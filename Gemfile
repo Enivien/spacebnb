@@ -6,6 +6,7 @@ gem 'devise'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem "pundit"
+gem 'geocoder'
 
 gem 'bootsnap', require: false
 gem 'figaro'

@@ -5,6 +5,15 @@ class SpaceshipsController < ApplicationController
   def index
     @spaceships = policy_scope(Spaceship).order(created_at: :desc)
     authorize @spaceships
+    @spaceships = Spaceship.where.not(latitude: nil, longitude: nil)
+
+    @markers = @spaceships.map do |spaceship|
+      {
+        lat: spaceship.latitude,
+        lng: spaceship.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/spaceships/map_box", locals: { spaceship: spaceship }) }
+      }
+    end
   end
 
   def show
