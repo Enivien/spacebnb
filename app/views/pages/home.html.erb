@@ -2,9 +2,6 @@
     <div class="banner-content">
       <h1>SPAAAAACE</h1>
       <p>Beam me up to a spaceship in a galaxy far far away...</p>
-<!--       <form action="#" class="form-inline" r_lpchecked="1">
-        <input type="text" class="form-control input-lg" placeholder="Search for spaceships">
-        <input type="submit" class="btn btn-primary-search btn-lg" value="Search"> -->
         <%= form_tag spaceships_path, method: :get, :class => 'form-inline' do %>
         <%= text_field_tag :query,
         params[:query],
@@ -15,7 +12,6 @@
         <br>
         <%= @button = submit_tag "Search!", :class => 'btn-primary-search' %>
       <% end %>
-<!--       </form> -->
     </div>
   </div>
   <div class="container text-center padded features">
