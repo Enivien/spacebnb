@@ -5,6 +5,8 @@
 <h3> Welcome <%= current_user.name %>!</h3>
 <br>
 
+<img src=<%= cl_image_path current_user.avatar %> class="avatar">
+
 <p> <strong>Bio:</strong></p>
 <p><%= current_user.description %></p>
 
@@ -20,20 +22,20 @@
     </p>
     <% spaceship.bookings.each do |booking| %>
     <% if booking.present? %>
-    <p><strong>Booking:</strong></p>
+    <p><strong>Booking Id:</strong> <%= booking.id %></p>
     <p> <strong>Start Date:</strong> <%= booking.start_date %></p>
     <p> <strong>End Date:</strong><%= booking.end_date %></p>
- <!--    <#% if booking.status == "Accepted" %>
+    <% if booking.status == "Accepted" %>
     <p>Accepted</p>
-    <#% elsif booking.status == "Declined" %>
+    <% elsif booking.status == "Declined" %>
     <p>Declined</p>
-    <#% else %> -->
+    <% else %>
     <%= simple_form_for ([spaceship, booking]) do |f| %>
     <%= f.select :status, ['Accepted', 'Declined']%>
     <%= f.button :submit, :class => 'btn btn-primary' %>
-    <!--     <#% end %> -->
+        <% end %>
     <% end %>
-    <p><strong>Total Price:</strong> <%= booking.total_price %></p>
+    <!-- <p><strong>Total Price:</strong> <%= booking.total_price %></p> -->
     <% end %>
     <% end %>
   </li>
