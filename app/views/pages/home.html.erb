@@ -1,2 +1,70 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+  <div class="home-banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'background.jpg' %>);">
+    <div class="banner-content">
+      <h1>SPAAAAACE</h1>
+      <p>Beam me up to a spaceship in a galaxy far far away...</p>
+      <form action="#" class="form-inline" r_lpchecked="1">
+        <input type="text" class="form-control input-lg" placeholder="Search for spaceships">
+        <input type="submit" class="btn btn-primary-search btn-lg" value="Search">
+      </form>
+    </div>
+  </div>
+  <div class="container text-center padded features">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= image_path 'galaxy.svg' %>"alt="" class="icon-size">
+        <h2>Discover the galaxy</h2>
+        <p>The Milky Way is your new home.</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= image_path 'rocket.svg' %>" alt="" class="icon-size">
+        <h2>Pay online</h2>
+        <p>No cash issues anymore.</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= image_path 'alien_2.svg' %>" alt="" class="icon-size">
+        <h2>Meet aliens</h2>
+        <p>Discover new culture and lifestyle.</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= image_path 'constellation.svg' %>" alt="" class="icon-size">
+        <h2>Share and love</h2>
+        <p>Join a community you will love.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper-grey padded">
+    <div class="container">
+      <h2 class="text-center">Your next trip</h2>
+       <div class="row">
+    <% @spaceships.first(3).each do |spaceship| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <%= link_to spaceship_path(spaceship) do %>
+        <% if spaceship.picture.present? %>
+          <div class="card" style="background-image: url('<%= cl_image_path spaceship.picture, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
+          <div class="card" style="background-image: url('https://media.tenor.com/images/baa51bc6187cb2fc286a3d3582061f12/tenor.png')">
+        <% end %>
+          <div class="card-description">
+            <%= spaceship.name %>
+          </div>
+          <div class="card-price">
+           $ <%= spaceship.price %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+    </div>
+  </div>
+
+  <div class="text-center padded" id="newsletter">
+    <h2>Get news from us</h2>
+    <p>Leave us your mail and get news from us</p>
+    <form class="form-inline">
+      <input type="email" placeholder="bob@gmail.com" class="form-control">
+      <input type="submit" value="Subscribe" class="btn btn-primary-form">
+    </form>
+  </div>
+ </div>
+
