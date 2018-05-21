@@ -54,13 +54,21 @@
     <% if booking.user == current_user %>
     <p><strong>Spaceship:</strong>
       <%= link_to booking.spaceship.name, spaceship_path(booking.spaceship) %></p>
-    <p><strong>Status:</strong> <%= booking.status %></p>
-    <% else %>
-    <p>You have no outgoing requests</p>
+      <p><strong>Status:</strong>
+        <% if booking.status.nil? %>
+        Pending
+        <% else %>
+        <%= booking.status %>
+        <% end %>
+      </p>
+      <% if booking.end_date < Date.today %>
+      <p>
+        <%= link_to "Review this past booking ❤️", new_booking_review_path(booking) %>
+      </p>
+      <% end %>
+      <% end %>
+    </li>
     <% end %>
-  </li>
-  <% end %>
+  </ul>
 
-</ul>
-
-<p><%= link_to 'Back to Explore Spaceships', spaceships_path %></p>
+  <p><%= link_to 'Back to Explore Spaceships', spaceships_path %></p>
