@@ -1,5 +1,6 @@
 class Spaceship < ApplicationRecord
   mount_uploader :picture, PhotoUploader
+  include PgSearch
   belongs_to :user
   has_many :bookings
   has_many :reviews, through: :bookings
@@ -10,4 +11,10 @@ class Spaceship < ApplicationRecord
   validates :capacity, presence: true
   validates :price, presence: true
   validates :location, presence: true
+
+  pg_search_scope :search_by_name_and_location,
+    against: [ :name, :location ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
