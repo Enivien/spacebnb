@@ -5,15 +5,17 @@ class SpaceshipsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = " \
-        sapceships.name @@ :query \
+        spaceships.name @@ :query \
         OR spaceships.location @@ :query \
       "
       @spaceships = Spaceship.where(sql_query, query: "%#{params[:query]}%")
+      authorize @spaceships
+      policy_scope @spaceships
     else
       @spaceships = policy_scope(Spaceship).order(created_at: :desc)
+      authorize @spaceships
     end
 
-    authorize @spaceships
     @spaceship_markers = Spaceship.where.not(latitude: nil, longitude: nil)
 
     @markers = @spaceship_markers.map do |spaceship|
