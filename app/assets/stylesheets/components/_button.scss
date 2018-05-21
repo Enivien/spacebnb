@@ -13,8 +13,9 @@
 }
 .btn-primary {
   color: white;
-  padding: 10px 15px;
-  border-radius: 50px;
+  border-radius: none;
+  border: none;
+  box-shadow: none;
   font-weight: bold;
   background: #6AD58B;
   transition: background 0.3s ease;
@@ -26,9 +27,15 @@
   color: white;
 }
 
+.btn-lg {
+  margin: 0px !important;
+}
+
 .btn-primary-search {
   color: white;
-  padding: 10px 30px;
+  border-radius: none !important;
+  border: none !important;
+  margin: 0px !important;
   font-weight: bold;
   background: #6AD58B;
   transition: background 0.3s ease;
@@ -43,7 +50,8 @@
 
 .btn-primary-form {
   color: white;
-  padding: 6px 20px;
+  border-radius: none;
+  border: none;
   font-weight: bold;
   background: #6AD58B;
   transition: background 0.3s ease;
