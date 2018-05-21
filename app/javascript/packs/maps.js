@@ -20,19 +20,25 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   const styles = [
     {
         "featureType": "all",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "saturation": "100"
+                "saturation": 36
             },
             {
-                "color": "#ff00ac"
+                "color": "#000000"
             },
             {
-                "lightness": "23"
-            },
-            {
-                "weight": "1"
+                "lightness": 40
             }
         ]
     },
@@ -44,7 +50,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
                 "visibility": "on"
             },
             {
-                "color": "#131313"
+                "color": "#000000"
             },
             {
                 "lightness": 16
@@ -65,153 +71,84 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#ff382e"
+                "color": "#000000"
             },
-            {
-                "lightness": "22"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ff382e"
-            },
-            {
-                "lightness": "10"
-            },
-            {
-                "saturation": "90"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "color": "#2b2b2b"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.country",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ff382e"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.province",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ff382e"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.locality",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ff382e"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.neighborhood",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ff382e"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.land_parcel",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ff382e"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
             {
                 "lightness": 20
-            },
-            {
-                "color": "#383838"
             }
         ]
     },
     {
-        "featureType": "landscape",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "lightness": "-21"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "hue": "#ff0000"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
         "stylers": [
             {
                 "color": "#000000"
             },
             {
-                "lightness": 21
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
             }
         ]
     },
     {
-        "featureType": "poi",
+        "featureType": "administrative.province",
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "lightness": "-5"
+                "color": "#00ecff"
             }
         ]
     },
     {
-        "featureType": "poi",
-        "elementType": "labels.text.fill",
+        "featureType": "administrative.province",
+        "elementType": "labels.text",
         "stylers": [
             {
-                "color": "#ff382e"
+                "visibility": "off"
+            },
+            {
+                "color": "#fcfcfc"
             }
         ]
     },
     {
-        "featureType": "road",
+        "featureType": "administrative.land_parcel",
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "lightness": "5"
+                "visibility": "on"
+            },
+            {
+                "color": "#64bf56"
             }
         ]
     },
     {
-        "featureType": "road.highway",
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#000000"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "hue": "#ff002e"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.landcover",
         "elementType": "all",
         "stylers": [
             {
@@ -220,17 +157,113 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         ]
     },
     {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#00a2ff"
+            },
+            {
+                "saturation": "100"
+            },
+            {
+                "weight": "4.32"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#8000ff"
+            },
+            {
+                "saturation": "95"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#00ff28"
+            },
+            {
+                "visibility": "off"
+            },
+            {
+                "saturation": "100"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "poi.attraction",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "saturation": "50"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#007609"
+            },
+            {
+                "saturation": "100"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ff0000"
+            }
+        ]
+    },
+    {
         "featureType": "road.highway",
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "lightness": "37"
+                "lightness": 17
             },
             {
                 "visibility": "on"
             },
             {
-                "color": "#ff00ac"
+                "color": "#ffffff"
             }
         ]
     },
@@ -239,25 +272,10 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "lightness": "-53"
+                "lightness": 29
             },
             {
                 "weight": 0.2
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway.controlled_access",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "lightness": "100"
-            },
-            {
-                "color": "#ff00ac"
-            },
-            {
-                "saturation": "10"
             }
         ]
     },
@@ -266,7 +284,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#000000"
+                "color": "#00c3ff"
             },
             {
                 "lightness": 18
@@ -278,10 +296,34 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#ff00ac"
+                "visibility": "on"
             },
             {
-                "lightness": "15"
+                "saturation": "-24"
+            },
+            {
+                "weight": "3.59"
+            },
+            {
+                "color": "#a81ca5"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "saturation": "0"
+            },
+            {
+                "gamma": "9.84"
+            },
+            {
+                "weight": "0.01"
             }
         ]
     },
@@ -290,7 +332,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#ec523f"
+                "color": "#000000"
             },
             {
                 "lightness": 16
@@ -302,10 +344,10 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#ff00ac"
+                "visibility": "on"
             },
             {
-                "lightness": "25"
+                "color": "#6f00ff"
             }
         ]
     },
@@ -314,37 +356,10 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry",
         "stylers": [
             {
-                "lightness": 19
+                "color": "#ff0009"
             },
             {
-                "color": "#404040"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "lightness": "14"
-            }
-        ]
-    },
-    {
-        "featureType": "transit.line",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "lightness": "-37"
-            }
-        ]
-    },
-    {
-        "featureType": "transit.station.airport",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "lightness": "-5"
+                "lightness": 19
             }
         ]
     },
@@ -353,7 +368,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#000000"
+                "color": "#008aff"
             },
             {
                 "lightness": 17
@@ -365,11 +380,12 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#5e4aa5"
+                "color": "#0000ff"
             }
         ]
     }
 ];
+
 
   map.addStyle({
     styles: styles,
