@@ -26,6 +26,35 @@
   color: white;
 }
 
+.btn-primary-search {
+  color: white;
+  padding: 10px 30px;
+  font-weight: bold;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+
+.btn-primary-search:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-primary-form {
+  color: white;
+  padding: 6px 20px;
+  font-weight: bold;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+
+.btn-primary-form:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
 
 .btn-secondary {
   color: white;
