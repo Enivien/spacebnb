@@ -3,7 +3,16 @@ class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: [:show, :destroy]
 
   def index
-    @spaceships = policy_scope(Spaceship).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = " \
+        sapceships.name @@ :query \
+        OR spaceships.location @@ :query \
+      "
+      @spaceships = Spaceship.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @spaceships = policy_scope(Spaceship).order(created_at: :desc)
+    end
+
     authorize @spaceships
     @spaceship_markers = Spaceship.where.not(latitude: nil, longitude: nil)
 
