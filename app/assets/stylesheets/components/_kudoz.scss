@@ -6,6 +6,10 @@
   transition: all 0.15s ease;
 }
 
+a:link{
+  text-decoration: none!important;
+}
+
 /* Body design */
 .product-body {
   flex: 1 1 auto;

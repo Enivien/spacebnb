@@ -54,10 +54,10 @@
         <h3><%= link_to booking.spaceship.name, spaceship_path(booking.spaceship) %></h3>
         <% if booking.end_date < Date.today %>
         <p>
-        <%= link_to "Review this past booking ❤️", new_booking_review_path(booking) %>
+          <%= link_to "Review this past booking ❤️", new_booking_review_path(booking) %>
         </p>
         <% else %>
-          <p><%= booking.start_date%> - <%= booking.end_date %></p>
+        <p><%= booking.start_date%> - <%= booking.end_date %></p>
         <% end %>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
@@ -98,6 +98,7 @@
        <% end %>
        <% end %>
      </div>
+     <p class="text-center"><%= link_to 'Add a New Spaceship', new_spaceship_path %></p>
      <p class="text-center"><%= link_to 'Back to Explore Spaceships', spaceships_path %></p>
    </div>
  </div>
