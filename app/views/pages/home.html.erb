@@ -5,12 +5,10 @@
         <%= form_tag spaceships_path, method: :get, :class => 'form-inline' do %>
         <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-control input-lg",
         placeholder: "Search for spaceships"
         %>
-        <br>
-        <br>
-        <%= @button = submit_tag "Search!", :class => 'btn-primary-search' %>
+        <%= @button = submit_tag "Search!", :class => 'btn btn-primary-search btn-lg' %>
       <% end %>
     </div>
   </div>
