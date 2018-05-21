@@ -3,11 +3,11 @@
 <!-- app/views/articles/_form.html.erb -->
 <%= simple_form_for(@spaceship) do |f| %>
   <!-- [...] -->
-  <%= f.input :name %>
-  <%= f.input :location %>
-  <%= f.input :price %>
-  <%= f.input :capacity %>
-  <%= f.input :picture %>
+  <%= f.input :name, input_html: {class: "form-control"} %>
+  <%= f.input :location , input_html: {class: "form-control"} %>
+  <%= f.input :price , input_html: {class: "form-control"} %>
+  <%= f.input :capacity , input_html: {class: "form-control"} %>
+  <%= f.input :picture , input_html: {class: "form-control"} %>
   <%= f.input :picture_cache, as: :hidden %>
   <%= f.button :submit, :class => 'btn btn-primary' %>
   <!-- [...] -->

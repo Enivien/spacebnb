@@ -9,11 +9,11 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
 </head>
-<body>
+<body class="<%= action_name %> <%= 'padding-top-70' unless params[:action] == "home" %>">
 
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
-
+  <!-- <div class="main"></div> -->
   <%= yield %>
 
   <%= render 'shared/footer' %>
