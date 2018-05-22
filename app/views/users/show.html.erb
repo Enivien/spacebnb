@@ -1,76 +1,105 @@
+<!--
+<div class="wrapper-grey padded">
+  <div class="container">
+    <h3 class="text-center"> Welcome <%= current_user.name %>!</h3>
+    <br>
+    <p class="text-center"> <strong>Your Bio:</strong></p>
+    <p class="text-center"><%= current_user.description %></p>
+  </div>
+</div> -->
 
-<h2>You get what you want when you poppin' 🛰</h2>
-<br>
-
-<h3> Welcome <%= current_user.name %>!</h3>
-<br>
-
-<img src=<%= cl_image_path current_user.avatar %> class="avatar">
-
-<p> <strong>Bio:</strong></p>
-<p><%= current_user.description %></p>
-
-<br>
-
-<h4>Your Spaceships 🚀 & Incoming Bookings:</h4>
-<ul>
-  <% if current_user.spaceships.present? %>
-  <% current_user.spaceships.each do |spaceship| %>
-  <li>
-    <p><strong>Spaceship:</strong>
-      <%= link_to spaceship.name, spaceship_path(spaceship) %>
-    </p>
+<div class="wrapper-grey padded">
+  <div class="container">
+    <h3 class="text-center">Your Incoming Bookings 🚀</h3>
+    <% if current_user.spaceships.present? %>
+    <% current_user.spaceships.each do |spaceship| %>
     <% spaceship.bookings.each do |booking| %>
     <% if booking.present? %>
-    <p><strong>Booking Id:</strong> <%= booking.id %></p>
-    <p> <strong>Start Date:</strong> <%= booking.start_date %></p>
-    <p> <strong>End Date:</strong><%= booking.end_date %></p>
-    <% if booking.status == "Accepted" %>
-    <p>Accepted</p>
-    <% elsif booking.status == "Declined" %>
-    <p>Declined</p>
-    <% else %>
-    <%= simple_form_for ([spaceship, booking]) do |f| %>
-    <%= f.select :status, ['Accepted', 'Declined']%>
-    <%= f.button :submit, :class => 'btn btn-primary' %>
-        <% end %>
-    <% end %>
-    <!-- <p><strong>Total Price:</strong> <%= booking.total_price %></p> -->
-    <% end %>
-    <% end %>
-  </li>
-  <% end %>
-
-  <% else %>
-  <p>You have no spaceships</p>
-  <% end %>
-</ul>
-
-<br>
-
-<h4>Your Outgoing Requests:</h4>
-
-<ul>
-  <% Booking.all.each do |booking| %>
-  <li>
-    <% if booking.user == current_user %>
-    <p><strong>Spaceship:</strong>
-      <%= link_to booking.spaceship.name, spaceship_path(booking.spaceship) %></p>
-      <p><strong>Status:</strong>
-        <% if booking.status.nil? %>
-        Pending
+    <div class="product">
+      <div class='product-body'>
+        <h3><%= link_to booking.spaceship.name, spaceship_path(booking.spaceship) %></h3>
+        <p><%= booking.user.name %> wants to book <%= booking.start_date%> - <%= booking.end_date %></p>
+      </div>
+      <ul class="list-inline product-controls hidden-sm hidden-xs">
+        <% if booking.status == "Accepted" %>
+        <p class="status accepted">Accepted</p>
+        <% elsif booking.status == "Declined" %>
+        <p class="status declined">Declined</p>
         <% else %>
-        <%= booking.status %>
+        <%= simple_form_for ([spaceship, booking]) do |f| %>
+        <%= f.select :status, ['Accepted', 'Declined']%>
+        <br>
+        <br>
+        <%= f.button :submit, :class => 'btn btn-primary' %>
         <% end %>
-      </p>
-      <% if booking.end_date < Date.today %>
-      <p>
-        <%= link_to "Review this past booking ❤️", new_booking_review_path(booking) %>
-      </p>
-      <% end %>
-      <% end %>
-    </li>
+        <% end %>
+      </ul>
+    </div>
     <% end %>
-  </ul>
+    <% end %>
+    <% end %>
+    <% else %>
+    <p>You have no spaceships</p>
+    <% end %>
+  </div>
+</div>
 
-  <p><%= link_to 'Back to Explore Spaceships', spaceships_path %></p>
+<div class="wrapper-grey padded">
+  <div class="container">
+    <h3 class="text-center">Your Outgoing Bookings 🚀</h3>
+    <% Booking.all.each do |booking| %>
+    <% if booking.user == current_user %>
+    <div class="product">
+      <div class='product-body'>
+        <h3><%= link_to booking.spaceship.name, spaceship_path(booking.spaceship) %></h3>
+        <% if booking.end_date < Date.today %>
+        <p>
+          <%= link_to "Review this past booking ❤️", new_booking_review_path(booking) %>
+        </p>
+        <% else %>
+        <p><%= booking.start_date%> - <%= booking.end_date %></p>
+        <% end %>
+      </div>
+      <ul class="list-inline product-controls hidden-sm hidden-xs">
+        <% if booking.status == "Accepted" %>
+        <p class="status accepted">Accepted</p>
+        <% elsif booking.status == "Declined" %>
+        <p class="status declined">Declined</p>
+        <% elsif booking.status.nil? %>
+        <p class="status pending">Pending</p>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="wrapper-grey padded">
+  <div class="container">
+    <h3 class="text-center">Your Spaceships 🚀</h3>
+    <div class="row">
+      <% current_user.spaceships.each do |spaceship| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= link_to spaceship_path(spaceship) do %>
+        <% if spaceship.picture.present? %>
+        <div class="card" style="background-image: url('<%= cl_image_path spaceship.picture, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
+          <div class="card" style="background-image: url('https://media.tenor.com/images/baa51bc6187cb2fc286a3d3582061f12/tenor.png')">
+            <% end %>
+            <div class="card-description">
+              <%= spaceship.name %>
+            </div>
+            <div class="card-price">
+             $ <%= spaceship.price %>
+           </div>
+         </div>
+       </div>
+       <% end %>
+       <% end %>
+     </div>
+     <p class="text-center"><%= link_to 'Add a New Spaceship', new_spaceship_path %></p>
+     <p class="text-center"><%= link_to 'Back to Explore Spaceships', spaceships_path %></p>
+   </div>
+ </div>
+</div>
