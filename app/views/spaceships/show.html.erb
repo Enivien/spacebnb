@@ -14,10 +14,6 @@ url('<%= cl_image_path @spaceship.picture, height: 300, width: 400, crop: :fill 
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-1">
         <div class="header-spaceship-details">
-          <div class="header-spaceship-owner text-center">
-            <%= cl_image_tag @spaceship.user.avatar, height: 50 %>
-            <p><%= @spaceship.user.name %></p>
-          </div>
           <div class="header-spaceship-name">
             <h1><%= @spaceship.name %></h1>
             <p><%= @spaceship.location %></p>
@@ -112,6 +108,29 @@ url('<%= cl_image_path @spaceship.picture, height: 300, width: 400, crop: :fill 
           </div>
         </div>
 
+        <div class="wrapper-grey padded">
+          <div class="container">
+            <h3 class="text-center">Reviews 🚀</h3>
+            <% if @spaceship.reviews.present? %>
+            <% @spaceship.reviews.each do |review| %>
+            <div class="product">
+              <div class='product-body'>
+                <h3><%= link_to review.booking.spaceship.name, spaceship_path(review.spaceship) %></h3>
+              </div>
+              <ul class="list-inline product-controls hidden-sm hidden-xs">
+                <% if booking.status == "Accepted" %>
+                <p class="status accepted">Accepted</p>
+                <% elsif booking.status == "Declined" %>
+                <p class="status declined">Declined</p>
+                <% elsif booking.status.nil? %>
+                <p class="status pending">Pending</p>
+                <% end %>
+              </ul>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
