@@ -36,3 +36,23 @@
 .fullpage {
   height: 100vh;
 }
+
+.inline {
+  display: inline-block;
+  margin-right: 40px;
+  margin-left:  40px;
+  margin-top: 40px;
+}
+
+.bottomgroup {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.bottombuttons {
+  flex: 0 0 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}

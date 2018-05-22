@@ -98,8 +98,16 @@
        <% end %>
        <% end %>
      </div>
-     <p class="text-center"><%= link_to 'Add a New Spaceship', new_spaceship_path %></p>
-     <p class="text-center"><%= link_to 'Back to Explore Spaceships', spaceships_path %></p>
+
+      <div class="bottomgroup">
+        <div class="bottombuttons">
+
+       <%= link_to 'Add a New Spaceship', new_spaceship_path, class: "text-center btn btn-primary" %>
+
+       <%= link_to 'Back to Explore Spaceships', spaceships_path, class: "text-center btn btn-secondary" %>
+       <p></p>
+       </div>
+    </div>
    </div>
  </div>
 </div>
