@@ -14,10 +14,6 @@ url('<%= cl_image_path @spaceship.picture, height: 300, width: 400, crop: :fill 
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-1">
         <div class="header-spaceship-details">
-          <div class="header-spaceship-owner text-center">
-            <%= cl_image_tag @spaceship.user.avatar, height: 50 %>
-            <p><%= @spaceship.user.name %></p>
-          </div>
           <div class="header-spaceship-name">
             <h1><%= @spaceship.name %></h1>
             <p><%= @spaceship.location %></p>
@@ -87,31 +83,23 @@ url('<%= cl_image_path @spaceship.picture, height: 300, width: 400, crop: :fill 
           </div>
         </div>
         <div class="row" id="spaceship-data">
-          <div class="col-xs-12 col-sm-2">
-            Reviews
-          </div>
-          <% if @spaceship.reviews.present? %>
-          <div class="col-xs-12 col-sm-4">
+        </div>
+
+        <div class="wrapper-grey padded">
+          <div class="container">
+            <h3 class="text-center">Reviews for this spaceship 🚀</h3>
+            <% if @spaceship.reviews.present? %>
             <% @spaceship.reviews.each do |review| %>
-            <ul class="list-unstyled">
-              <li>
-                Content: <%= review.content %>
-              </li>
-              <li>
-                Stars: <% review.stars.times do %><i class="fa fa-star" style="color: #ffb400"></i>
-                <% end %>
-              </li>
-              <li>
-                Customer: <%= review.booking.user.name %>
-              </li>
-            </ul>
+            <div class="product">
+              <div class='product-body'>
+                <h3><%= link_to review.content, spaceship_path(review) %></h3>
+                <p>Went to space <%= review.booking.start_date %> - <%= review.booking.end_date %></p>
+              </div>
+            </div>
             <% end %>
-            <% else %>
-            <p>No reviews yet :(</p>
             <% end %>
           </div>
         </div>
-
       </div>
     </div>
   </div>
