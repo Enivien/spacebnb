@@ -83,49 +83,18 @@ url('<%= cl_image_path @spaceship.picture, height: 300, width: 400, crop: :fill 
           </div>
         </div>
         <div class="row" id="spaceship-data">
-          <div class="col-xs-12 col-sm-2">
-            Reviews
-          </div>
-          <% if @spaceship.reviews.present? %>
-          <div class="col-xs-12 col-sm-4">
-            <% @spaceship.reviews.each do |review| %>
-            <ul class="list-unstyled">
-              <li>
-                Content: <%= review.content %>
-              </li>
-              <li>
-                Stars: <% review.stars.times do %><i class="fa fa-star" style="color: #ffb400"></i>
-                <% end %>
-              </li>
-              <li>
-                Customer: <%= review.booking.user.name %>
-              </li>
-            </ul>
-            <% end %>
-            <% else %>
-            <p>No reviews yet :(</p>
-            <% end %>
-          </div>
         </div>
 
         <div class="wrapper-grey padded">
           <div class="container">
-            <h3 class="text-center">Reviews 🚀</h3>
+            <h3 class="text-center">Reviews for this spaceship 🚀</h3>
             <% if @spaceship.reviews.present? %>
             <% @spaceship.reviews.each do |review| %>
             <div class="product">
               <div class='product-body'>
-                <h3><%= link_to review.booking.spaceship.name, spaceship_path(review.spaceship) %></h3>
+                <h3><%= link_to review.content, spaceship_path(review) %></h3>
+                <p>Went to space <%= review.booking.start_date %> - <%= review.booking.end_date %></p>
               </div>
-              <ul class="list-inline product-controls hidden-sm hidden-xs">
-                <% if booking.status == "Accepted" %>
-                <p class="status accepted">Accepted</p>
-                <% elsif booking.status == "Declined" %>
-                <p class="status declined">Declined</p>
-                <% elsif booking.status.nil? %>
-                <p class="status pending">Pending</p>
-                <% end %>
-              </ul>
             </div>
             <% end %>
             <% end %>
